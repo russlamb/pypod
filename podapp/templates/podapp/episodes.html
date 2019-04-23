@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Episodes</title>
+</head>
+<body>
+{% if episode_list %}
+    <h1>Episodes for {{ podcast_name }}</h1>
+    <ul>
+        {% for episode in episode_list %}
+            <li><a href ="{% url 'episode' episode.id %}">{{ episode.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No episodes available</p>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode Detail</title>
+</head>
+<body>
+{% if episode %}
+    <h2>{{ episode.title }}</h2>
+    <p>{{ episode.description }}</p>
+    <p><a href="{{ episode.file.url }}">{{ episode.file.url }}</a></p>
+    <p>{{ MEDIA_URL }}</p>
+{% else %}
+    <p>No episode information available</p>
+{% endif %}
+</body>
+</html>

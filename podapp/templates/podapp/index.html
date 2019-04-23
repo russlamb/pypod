@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Podcasts</title>
+</head>
+<body>
+{% if podcast_list %}
+    <ul>
+        {% for podcast in podcast_list %}
+            <li><a href="{% url 'episodes' podcast.id %}">{{ podcast.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No podcasts are available.</p>
+{% endif %}
+
+</body>
+</html>
