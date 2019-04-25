@@ -15,9 +15,13 @@ itunes_subtitle = models.CharField(max_length=50, blank=True)
 itunes_type = models.CharField(max_length=50, default="serial")
 itunes_category = models.CharField(max_length=50, choices=ITUNES_CATEGORY, default="Society & Culture")
 
+
+
+
 -->
 <h2><a href="{{ object.link }}">{{ object.name }}</a></h2>
 <p><strong>ID</strong>: {{ object.id }}</p>
+<p><strong>Link</strong>: {{ object.link }}</p>
 <p><strong>Language</strong>: {{ object.language }}</p>
 <p><strong>Copyright</strong>: {{ object.copyright }}</p>
 <p><strong>Email</strong>: {{ object.email }}</p>

@@ -1,0 +1,12 @@
+{% extends 'podapp/base.html' %}
+
+{% block content %}
+<h2>Podcast Index</h2>
+<form action="." method="POST">
+    {% csrf_token %}
+    <table>
+    {{ form }}
+        </table>
+    <button type="submit">SUBMIT</button>
+</form>
+{% endblock %}
