@@ -1,17 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Episode Detail</title>
-</head>
-<body>
+{% extends 'podapp/base.html' %}
+
+{% block content %}
 {% if episode %}
-    <h2>{{ episode.title }}</h2>
-    <p>{{ episode.description }}</p>
-    <p><a href="{{ episode.file.url }}">{{ episode.file.url }}</a></p>
-    <p>{{ MEDIA_URL }}</p>
+<!--
+id = models.AutoField(primary_key=True)
+title = models.CharField(max_length=100, unique=True)
+description = models.CharField(max_length=5000, default="Episode Description")
+file = models.FileField(upload_to='episodes/')
+created_on = models.DateTimeField(auto_now_add=True, blank=True)  #
+podcast = models.ForeignKey(Podcast, on_delete=models.CASCADE)
+
+# RSS items below based on iTunes RSS sample
+# https://help.apple.com/itc/podcasts_connect/#/itcbaf351599
+episode_type = models.CharField(max_length=50, default="full")
+episode = models.IntegerField(default=1)  # itunes_episode tag
+season = models.IntegerField(default=1)  # itunes_season tag
+duration_in_seconds = models.IntegerField(default=-1)
+author = models.CharField(max_length=200, default="Episode Author")
+explicit = models.BooleanField(default=False)  # itunes_explicit tag.  should be "yes" or "no"
+enclosure_type = models.CharField(max_length=50, default="audio/mpeg")
+image = models.URLField(blank=True)  # itunes_image tag
+-->
+    <h2><a href="{{ episode.file.url }}">{{ episode.title }}</a></h2>
+    <p><strong>ID</strong>: {{ episode.id }}</p>
+    <p><strong>description</strong>: {{ episode.description }}</p>
+    <p><strong>file</strong>: {{ episode.file.url }}</p>
+    <p><strong>created_on</strong>: {{ episode.created_on }}</p>
+    <p><strong>podcast</strong>: {{ episode.podcast }}</p>
+    <p><strong>episode_type</strong>: {{ episode.episode_type }}</p>
+    <p><strong>episode</strong>: {{ episode.episode }}</p>
+    <p><strong>season</strong>: {{ episode.season }}</p>
+    <p><strong>duration_in_seconds</strong>: {{ episode.duration_in_seconds }}</p>
+    <p><strong>author</strong>: {{ episode.author }}</p>
+    <p><strong>explicit</strong>: {{ episode.explicit }}</p>
+    <p><strong>enclosure_type</strong>: {{ episode.enclosure_type }}</p>
+    <p><strong>image</strong>: {{ episode.image }}</p>
+
 {% else %}
     <p>No episode information available</p>
 {% endif %}
-</body>
-</html>
+{% endblock %}

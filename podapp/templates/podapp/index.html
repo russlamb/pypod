@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Podcasts</title>
-</head>
-<body>
+{% extends 'podapp/base.html' %}
+
+{% block content %}
+<h2>Podcast Index</h2>
 {% if podcast_list %}
     <ul>
         {% for podcast in podcast_list %}
-            <li><a href="{% url 'episodes' podcast.id %}">{{ podcast.name }}</a></li>
+            <li>
+                <p><strong><a href="{% url 'podcast' podcast.id %}">{{ podcast.name }}</a></strong>
+            </li>
         {% endfor %}
     </ul>
 {% else %}
     <p>No podcasts are available.</p>
 {% endif %}
 
-</body>
-</html>
+<h2>Add a Podcast</h2>
+Click <a href="{% url 'add_podcast' %}">here</a> to add a podcast
+{% endblock %}

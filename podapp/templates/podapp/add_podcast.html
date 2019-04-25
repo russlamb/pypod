@@ -1,0 +1,15 @@
+{% extends 'podapp/base.html' %}
+
+{% block content %}
+<h1>Add a Podcast</h1>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'add_podcast' %}" method="post">
+{% csrf_token %}
+
+<input type="text" name="name" id="podcastname" >
+<label for="podcastname">Podcast Name</label><br>
+
+<input type="submit" value="Submit">
+</form>
+{% endblock %}
